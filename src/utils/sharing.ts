@@ -1,5 +1,3 @@
-import html2canvas from 'html2canvas';
-
 export async function copyToClipboard(text: string): Promise<boolean> {
   try {
     if (navigator.clipboard?.writeText) {
@@ -32,6 +30,7 @@ export function shareEmail(text: string): void {
 
 export async function downloadAsImage(element: HTMLElement): Promise<boolean> {
   try {
+    const { default: html2canvas } = await import('html2canvas');
     const canvas = await html2canvas(element, {
       backgroundColor: '#0f172a',
       scale: 2,
